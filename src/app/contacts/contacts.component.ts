@@ -44,7 +44,7 @@ export class ContactsComponent implements OnInit {
       'Authorization': `Bearer ${token}`
     })
 
-     this.http.get("http://localhost:3000/contact",{headers: headers}).subscribe((contacts)=>{
+     this.http.get(environment.backend_url+ "/contact",{headers: headers}).subscribe((contacts)=>{
      this.contacts = contacts;
     //console.log(this.contacts)
      if(this.contacts==undefined || this.contacts==null || this.contacts == [])

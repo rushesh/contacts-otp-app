@@ -9,7 +9,7 @@ export class AuthService{
         this.loggedIn.next(true); 
         
         this.token = localStorage.getItem('token')
-        console.log(this.token, this.loggedIn)
+        //console.log(this.token, this.loggedIn)
         return this.loggedIn.asObservable();
     }
     logout(){

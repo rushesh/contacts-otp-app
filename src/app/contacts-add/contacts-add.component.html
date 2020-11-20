@@ -1,0 +1,106 @@
+<div class="container">
+    
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-8 col-sm-offset-1 col-md-offset-2">
+            <hr>
+            <h3>
+                Add Contact
+            </h3>
+            <hr>
+            <form (ngSubmit)="onSubmit(f,$event)" #f="ngForm">
+                <div id="user-data" ngModelGroup="userdata">
+
+                    <div class ="form-group">
+                        <label for="fname">First Name</label>
+                        <input
+                        type="text"
+                        id="fname"
+                        minlength="3"
+                        class="form-control"
+                        ngModel
+                        required
+                        name="fname"
+                        #fname="ngModel"
+                        >
+                    </div>
+                    <div 
+                    *ngIf="!fname.valid && (fname.touched)"
+                     class="alert alert-danger alert-dismissible fade show" 
+                     role="alert">
+                     <div *ngIf="fname.errors.required">
+                        First Name is required.
+                      </div>
+                      
+                      <div *ngIf="fname.errors.minlength">
+                        First Name must be at least 3 characters long.
+                      </div>
+                         
+                        <!-- <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button> -->
+                      </div>
+                    
+                      
+
+                      <div class ="form-group">
+                        <label for="lname">Last Name</label>
+                        <input
+                        type="text"
+                        id="lname"
+                        minlength="3"
+                        class="form-control"
+                        ngModel
+                        required
+                        name="lname"
+                        #lname="ngModel"
+                        >
+                    </div>
+                    <div 
+                    *ngIf="!lname.valid && (lname.touched||lname.dirty)"
+                     class="alert alert-danger alert-dismissible fade show" 
+                     role="alert">
+                     <div *ngIf="lname.errors.required">
+                        Last Name is required.
+                      </div>
+                      
+                      <div *ngIf="lname.errors.minlength">
+                        Last Name must be at least 3 characters long.
+                      </div>
+                      </div>
+                    
+
+                    <div class ="form-group">
+                        <label for="number">Phone Number</label>
+                        <input
+                        type="number"
+                        id="number"
+                        class="form-control"
+                        ngModel
+                        required
+                        name="number"
+                        #number="ngModel"
+                        pattern="[1-9]{1}[0-9]{9}"
+                        >
+                    </div>
+                    <div 
+                    *ngIf="!number.valid && number.touched"
+                     class="alert alert-danger alert-dismissible fade show" 
+                     role="alert">
+                     <div *ngIf="number.errors.required">
+                      Phone  Number is required.
+                      </div>
+                      
+                      <div *ngIf="number.errors.pattern">
+                        Number should be of 10 digits.
+                      </div>
+                      </div>
+                </div>
+                <button
+                class="btn btn-primary"
+                type="submit"
+                [disabled]="!f.valid"
+                >Submit</button>
+            </form>
+        </div>
+    </div>
+    </div>

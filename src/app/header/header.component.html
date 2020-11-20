@@ -1,0 +1,81 @@
+<nav class="navbar navbar-expand-md navbar-dark" 
+style="background-image: url('../../assets/images/back_1.jpg');background-size:cover">
+	<div class="container">
+  <!-- Brand -->
+  <!-- <a class="navbar-brand" href="#"><span>Contact</span>to</a> -->
+  <a href=""><img style = "max-height: 150px;" src="../../assets/images/contacto.png"></a>
+
+  <!-- Toggler/collapsibe Button -->
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <!-- Navbar links -->
+  <div class="collapse navbar-collapse" id="collapsibleNavbar">
+    <ul class="navbar-nav ml-auto">
+
+        <!-- Dropdown -->
+    <li 
+    
+    class="nav-item dropdown"
+    >
+        <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+          User
+        </a>
+        <div class="dropdown-menu">
+          <a class="dropdown-item" href="/login">Login</a>
+          <a class="dropdown-item" href="/register">Register</a>
+        </div>
+        
+      </li>
+
+      <li 
+      
+      class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+          Contacts
+        </a>
+        <div class="dropdown-menu">
+            <a class="dropdown-item" href="/contacts">Show All</a>
+            <a class="dropdown-item" href="/addcontact">Add New</a>
+            
+            <a class="dropdown-item" href="/userprofile">Your Profile/Sent Messages</a>
+          </div>
+          
+      </li>
+
+<!--       
+
+      <li class="nav-item">
+        <a class="nav-link" href="">About US</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="">Contact US</a>
+      </li>
+      -->
+      
+      <li 
+      
+      class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+          More
+        </a>
+        <div class="dropdown-menu">
+            <a class="dropdown-item" href="" (click)="onLogout()">Logout Current</a>
+            <a class="dropdown-item" href="" (click)="onLogoutAll()">Logout All Sessions</a>
+          </div>
+          
+      </li>
+
+    </ul>
+  </div>
+	</div>
+</nav>
+
+<!-- <div class="banner">
+	<div class="container">
+	<div class="banner-text">
+	
+	</div>
+	</div>
+</div> -->

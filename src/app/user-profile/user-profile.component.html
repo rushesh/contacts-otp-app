@@ -1,0 +1,106 @@
+<div class="container" *ngIf="user">
+    <hr>
+    <h2 
+    style="padding:15px;margin:5px">Your Profile</h2>
+    <hr>
+      <div class="card" 
+    style="padding:10px;margin:5px;">
+        <!-- <img class="card-img-top" src="img_avatar1.png" alt="Card image" style="width:100%"> -->
+        <div class="card-body">
+          <h4 class="card-footer"
+          style="background:#fed136 ;padding:10px">
+            <label>Name : </label>
+            {{user.name}}</h4>
+          <p class="card-footer"
+          style="background:#fed136 ;padding:10px">
+            <strong><label>Email : </label>
+            {{user.email}}</strong></p>
+          <p class="card-footer"
+          style="background:#fed136 ;padding:10px">
+            <strong><label>Age : </label>{{user.age}}</strong></p>
+        </div>
+      </div>
+      
+      <!-- <div *ngIf="user.messagessent?.length > 0" class="card-body">
+          <div class="card" *ngIf="user.messagessent?.length > 0" style="padding:10px;margin:5px;">
+          <div *ngFor="let u of user.messagessent">
+              <hr>
+            <p class="card-footer"
+            style="background:#fed136 ;
+            padding:10px">
+            <strong>
+                <label>Number : </label>{{u.to}}</strong><br>
+            <strong>
+                <label>Message : </label>{{u.message}}</strong>
+                <br>
+                    <strong>
+                        <label>Time String: </label>{{u.timestring}}</strong>
+                    
+                    <br>
+                    <strong>
+                        <label>Name : </label>{{u.toname}}</strong>
+            </p>
+            <hr>
+          </div>
+        </div>
+        </div> -->
+        <div *ngIf="user.messagessent?.length > 0" class="container">
+        <div class="row py-5">
+            <div class="col-12">
+              <table id="example" class="table table-striped table-hover responsive nowrap" style="width:100%">
+                <thead>
+                  <tr>
+                    <th [class.active]="order === 'toname'"
+                    (click)="setOrder('toname')"
+                    >Name<span [hidden]="reverse">▼</span><span [hidden]="!reverse">▲</span></th>
+                    
+                    <th [class.active]="order === 'to'"
+                    (click)="setOrder('to')"
+                    class="mdl-data-table__cell--non-numeric">Phone Number
+                    <span [hidden]="reverse">▼</span><span [hidden]="!reverse">▲</span>
+                  </th>
+
+                    <th>Message</th>
+                    <th [class.active]="order === 'timestring'"
+                    (click)="setOrder('timestring')">Time
+                    <span [hidden]="reverse">▼</span><span [hidden]="!reverse">▲</span></th>
+                  </tr>
+                </thead>
+                <tbody> 
+                  <tr
+                   *ngFor="let u of user.messagessent | orderBy: order:reverse:'case-insensitive'">
+                    <td>
+                        <div class="d-flex align-items-center">
+                          <div class="avatar avatar-blue mr-3">{{u.toname | slice:0:1  | titlecase}}</div>
+        
+                          <div class="">
+                            <p class="font-weight-bold mb-0">{{u.toname | titlecase}}</p>
+                            <p class="text-muted mb-0">{{u.to}}</p>
+                          </div>
+                        </div>
+                    </td>
+                    <td>{{u.to}}</td>
+                    <td>{{u.message}}</td>
+                    <td>{{u.timestring}}</td>
+                  </tr>
+                  
+                </tbody>
+                
+              </table>   
+                </div> 
+                </div>
+         
+  <div 
+  *ngIf="!user.messagessent?.length > 0"
+  >    
+  <div class="card"
+  style="padding: 20px;margin: 20px;background: #fed136;">
+  <div class="card-block">
+    <div class="card-header"><strong>Your have not sent any message to anyone.</strong></div>
+    <hr>
+    <div class="card-footer"><strong>Please send messages.</strong> </div>
+  </div>
+</div>
+</div>
+
+    </div>

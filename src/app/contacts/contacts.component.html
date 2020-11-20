@@ -1,0 +1,110 @@
+<div class="container" *ngIf="contacts?.length > 0">
+    <div class="row py-5">
+      <div class="col-12">
+        <table id="example" class="table table-striped table-hover responsive nowrap" style="width:100%">
+          <thead>
+            <tr>
+              <th style="display: none;">ID</th>
+
+              <th [class.active]="order === 'fname'"
+              (click)="setOrder('fname')">
+              <span [hidden]="reverse">▼</span><span [hidden]="!reverse">▲</span>Name</th>
+
+              <th [class.active]="order === 'number'"
+              (click)="setOrder('number')">
+              <span [hidden]="reverse">▼</span><span [hidden]="!reverse">▲</span>Phone Number</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody> 
+            <tr
+             *ngFor="let contact of contacts | orderBy: order:reverse:'case-insensitive'">
+                <td style="display:none"></td>
+              <td>
+                  <div class="d-flex align-items-center">
+                    <p class="text-muted mb-0" style="display: none;">{{contact._id}}</p>
+                    <div class="avatar avatar-blue mr-3">{{contact.initials | uppercase}}</div>
+  
+                    <div class="">
+                      <p class="font-weight-bold mb-0">{{contact.fname | titlecase}}</p>
+                      <p class="text-muted mb-0">{{contact.fname | titlecase}} {{contact.lname | titlecase}}</p>
+                    </div>
+                  </div>
+              </td>
+              <td>{{contact.number}}</td>
+             
+              <!-- <td>
+                <div class="dropdown">
+                  <button class="btn btn-sm btn-icon" type="button" id="dropdownMenuButton2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="bx bx-dots-horizontal-rounded" data-toggle="tooltip" data-placement="top"
+                          title="Actions"></i>
+                          ...
+                      </button>
+                  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton2">
+                    <a class="dropdown-item" href="#"><i class="bx bxs-pencil mr-2"></i> Edit Profile</a>
+                    <a class="dropdown-item text-danger" href="#"><i class="bx bxs-trash mr-2"></i> Remove</a>
+                  </div>
+                </div>
+              </td> -->
+
+               <td>
+                <button
+                class="btn btn-warning"
+                 (click)="tableClicked(contact,template)">Send Message</button>
+              </td>
+            </tr>
+            
+          </tbody>
+          
+        </table>   
+          </div> 
+    </div>
+  </div>
+  
+  <div 
+  *ngIf="!contacts?.length > 0"
+  >    
+  <div class="card"
+  style="padding: 20px;margin: 20px;background: #fed136;">
+  <div class="card-block">
+    <div class="card-header"><strong>There are no contacts in your contact list.</strong></div>
+    <hr>
+    <div class="card-footer"><strong>Please add contacts.</strong> </div>
+  </div>
+</div>
+</div>
+
+
+  <!-- <pre class="card card-block card-header">{{message}}</pre> -->
+  <ng-template #template>
+        <div>
+            <div class="modal-header">
+                 <h4 class="modal-title pull-left"> 
+                    <div class="avatar avatar-blue mr-3">{{clickedContact.initials}}</div>
+                    
+                </h4>
+                <div class="pull-right">
+                    <p class="font-weight-bold mb-0">{{clickedContact.fname}}</p>
+                    <p class="text-muted mb-0">{{clickedContact.fname}} {{clickedContact.lname}}</p>
+                  </div>
+                <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+
+          </div>
+        
+    <div class="model-body"
+    style="padding:5px">
+
+        <p
+        >Do you want to send the message to <strong>{{clickedContact.number}}</strong>.</p>
+        <p>Your OTP is : <strong>{{otp}}</strong></p>
+          
+    </div>
+    <div class="modal-footer"
+    style="justify-content:center">
+      <button type="button" class="btn btn-primary" (click)="confirm(clickedContact,otp)" >Yes</button>
+      <button type="button" class="btn btn-danger" (click)="modalRef.hide()">No</button>
+    </div>  
+  </ng-template>

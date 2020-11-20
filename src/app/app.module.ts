@@ -3,16 +3,46 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { LoginformComponent } from './loginform/loginform/loginform.component';
+import { FormsModule } from '@angular/forms';
+import {  HttpClientModule } from '@angular/common/http';
+import { ContactsComponent } from './contacts/contacts.component';
+import { HomeComponent } from './home/home.component';
+import { RegisterComponent } from './register/register.component';
+import { HeaderComponent } from './header/header.component';
+import { ModalModule } from 'ngx-bootstrap/modal';
+import { AuthGuard } from './auth-guard.service';
+import { AuthService } from './auth.service';
+import { ContactsAddComponent } from './contacts-add/contacts-add.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
+import { UserProfileComponent } from './user-profile/user-profile.component';
+import { SentMessagesComponent } from './sent-messages/sent-messages.component';
+import { OrderModule } from 'ngx-order-pipe';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    LoginformComponent,
+    ContactsComponent,
+    HomeComponent,
+    RegisterComponent,
+    HeaderComponent,
+    ContactsAddComponent,
+    UserProfileComponent,
+    SentMessagesComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    FormsModule,
+    AppRoutingModule,
+    HttpClientModule,
+    ModalModule.forRoot(),
+    BrowserAnimationsModule, // required animations mo,dule
+    ToastrModule.forRoot(), // ToastrModule added
+    OrderModule
   ],
-  providers: [],
+  providers: [AuthGuard,AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

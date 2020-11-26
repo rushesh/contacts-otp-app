@@ -47,6 +47,4 @@ Thumbs.db
 
 README.md
 
-./src/environments/
-
-.firebase
+/src/environments/

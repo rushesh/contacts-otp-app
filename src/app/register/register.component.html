@@ -1,3 +1,9 @@
+<div *ngIf="registerform;else elsetemplateregister">
+  <div id="loader"></div>
+</div>
+<ng-template #elsetemplateregister>
+
+
 <div class="container">
     
     <div class="row">
@@ -138,3 +144,5 @@
         </div>
     </div>
     </div>
+
+  </ng-template>

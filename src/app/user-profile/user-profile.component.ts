@@ -58,8 +58,9 @@ export class UserProfileComponent implements OnInit {
         timeOut:2000,
         progressBar:true
       });
+    },()=>{
+      this.fetchingprofile = false;
     })
-    this.fetchingprofile = false;
     }
   }
   setOrder(value: string) {

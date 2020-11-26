@@ -13,11 +13,12 @@ import { AuthService } from '../auth.service';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
-
+  registerform:boolean = false;
   constructor(private http:HttpClient,private router:Router,private authService:AuthService,private toastr:ToastrService) { }
 
   ngOnInit() {
     let token = localStorage.getItem('token')
+    this.registerform = false;
     if(token!=null){
       this.toastr.warning('@Contactto','You are already logged in. Please logout to register.',{
         timeOut:2000,
@@ -35,6 +36,7 @@ export class RegisterComponent implements OnInit {
       const user = {
         email,password,age,name
       }
+      this.registerform = true;
       this.http.post(
         environment.backend_url+'/user',user).subscribe((responseData)=>{
           // console.log(responseData)
@@ -65,6 +67,8 @@ export class RegisterComponent implements OnInit {
               //this.router.navigate(['/login'])  
             }
           })
+        },()=>{
+          this.registerform = false;
         })
     } catch (error) {
         this.router.navigate(['/'])

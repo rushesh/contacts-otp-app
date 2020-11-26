@@ -14,8 +14,10 @@ import Swal from 'sweetalert2';
 })
 export class LoginformComponent implements OnInit {
 
+  loginform:boolean = false;
   constructor(private http: HttpClient, private router:Router,private authService:AuthService,private toastr:ToastrService) { }
   ngOnInit() {
+    this.loginform = false;
     let token = localStorage.getItem('token')
     if(token!=null){
       this.toastr.warning('@Contactto','You are already logged in',{
@@ -32,6 +34,7 @@ export class LoginformComponent implements OnInit {
         email,password
       }
       try {
+        this.loginform = true;
         this.http.post(
           environment.backend_url+'/user/login',user).subscribe((responseData)=>{
             
@@ -59,7 +62,10 @@ export class LoginformComponent implements OnInit {
                 //this.router.navigate(['/login'])  
               }
             })
+          },()=>{
+            this.loginform = false;
           })
+          
       } catch (error) {
           this.router.navigate(['/'])
       }

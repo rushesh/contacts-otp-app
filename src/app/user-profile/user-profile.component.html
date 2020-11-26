@@ -1,9 +1,9 @@
-<div *ngIf="loadingContacts;else elsetemplate">
-  <h3 id="loadertext">Fetching Your Profile</h3>
+<div *ngIf="fetchingprofile;else elsetemplateprofile">
+  <!-- <h3 id="loadertext">Fetching Your Profile</h3> -->
   <div id="loader"></div>
 </div>
 
-<ng-template #elsetemplate>
+<ng-template #elsetemplateprofile>
 
 <div class="container" *ngIf="user">
     <hr>
@@ -54,7 +54,7 @@
         <div *ngIf="user.messagessent?.length > 0" class="container">
         <div class="row py-5">
             <div class="col-12">
-              <table id="example" class="table table-striped table-hover responsive nowrap" style="width:100%">
+              <table id="example" class="table table-striped table-hover table-responsive-xl nowrap" style="width:100%">
                 <thead>
                   <tr>
                     <th [class.active]="order === 'toname'"

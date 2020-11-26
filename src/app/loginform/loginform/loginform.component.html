@@ -1,3 +1,7 @@
+<div *ngIf="loginform;else elsetemplatelogin">
+  <div id="loader"></div>
+</div>
+<ng-template #elsetemplatelogin>
 <div class="container">
     <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-8 col-sm-offset-1 col-md-offset-2">
@@ -73,3 +77,4 @@
         </div>
     </div>
     </div>
+  </ng-template>

@@ -44,11 +44,6 @@ testem.log
 # System Files
 .DS_Store
 Thumbs.db
-
-README.md
-
-/src/environments/
-/.firebase/
+/.firebase
 /.firebaserc
-firebase.json
-.gitignore
+/src/environments

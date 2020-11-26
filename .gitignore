@@ -46,3 +46,5 @@ testem.log
 Thumbs.db
 
 README.md
+
+src\environments

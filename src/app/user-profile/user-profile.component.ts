@@ -16,7 +16,7 @@ export class UserProfileComponent implements OnInit {
   user;
   order: string = 'timestring';
   reverse: boolean = true;
-  
+  fetchingprofile:boolean = false;
   sortedCollection: any[];
 
   constructor(private orderPipe: OrderPipe,private http:HttpClient,private router:Router,private authService:AuthService,private toastr:ToastrService) { 
@@ -33,6 +33,8 @@ export class UserProfileComponent implements OnInit {
         this.router.navigate([''])
     }
     else{
+      this.fetchingprofile = true;
+
       const headers = new HttpHeaders({
         'Content-Type': 'application/json',
         'Authorization': `Bearer ${token}`
@@ -57,6 +59,7 @@ export class UserProfileComponent implements OnInit {
         progressBar:true
       });
     })
+    this.fetchingprofile = false;
     }
   }
   setOrder(value: string) {

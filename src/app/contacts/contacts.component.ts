@@ -1,4 +1,4 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
 import {  Component, OnInit } from '@angular/core';
 import { TemplateRef } from '@angular/core';
 import { Router } from '@angular/router';
@@ -7,6 +7,7 @@ import { OrderPipe } from 'ngx-order-pipe';
 import { ToastrService } from 'ngx-toastr';
 import Swal from 'sweetalert2';
 import { environment } from '../../environments/environment';
+import { ContactsService } from './contacts.service';
 @Component({
   selector: 'app-contacts',
   templateUrl: './contacts.component.html',
@@ -17,7 +18,7 @@ export class ContactsComponent implements OnInit {
   contacts: any = [];
   message: string;
   modalRef: BsModalRef;
-
+  loadingContacts: boolean = false;
   
   order: string = 'number';
   reverse: boolean = false;
@@ -31,20 +32,17 @@ export class ContactsComponent implements OnInit {
   };
   clickedContact: any;
   otp : any;
-  constructor(private orderPipe: OrderPipe,private http: HttpClient,private modalService: BsModalService,private router:Router,private toastr:ToastrService) { }
+  constructor(private contactService:ContactsService,private orderPipe: OrderPipe,private http: HttpClient,private modalService: BsModalService,private router:Router,private toastr:ToastrService) { }
 
    ngOnInit(): void {
+     this.loadingContacts = true;
     //console.log(this.contacts)
     const that = this;
     let token = localStorage.getItem("token")
     //console.log("Token "+token)
     if(token!=null){
-    const headers = new HttpHeaders({
-      'Content-Type': 'application/json',
-      'Authorization': `Bearer ${token}`
-    })
 
-     this.http.get(environment.backend_url+ "/contact",{headers: headers}).subscribe((contacts)=>{
+     this.contactService.getContacts(token).subscribe((contacts)=>{
      this.contacts = contacts;
     //console.log(this.contacts)
      if(this.contacts==undefined || this.contacts==null || this.contacts == [])
@@ -64,6 +62,7 @@ export class ContactsComponent implements OnInit {
         });
       }
       this.sortedCollection = this.orderPipe.transform(this.contacts, 'number');
+      this.loadingContacts = false;
     }
     )
   }
@@ -74,8 +73,7 @@ export class ContactsComponent implements OnInit {
     });
     this.router.navigate(['/login'])
   }
-  // console.log(this.contacts)
-  
+  // console.log(this.contacts);
 }
 
    tableClicked(contact,template){
@@ -106,12 +104,20 @@ export class ContactsComponent implements OnInit {
     this.http.post(
       environment.backend_url+"/user/sendmessage",msg,{
         headers:headers
-      }).subscribe((responseData)=>{
-        // console.log(responseData)  
-        this.toastr.success('@Contactto','OTP sent successfully.',{
-          timeOut:2000,
-          progressBar:true
-        });
+      }).subscribe((responseData: any)=>{
+        //console.log(responseData)  
+        if(responseData.error){
+          this.toastr.error('@Contactto','Some error ocured while sending OTP. ' + responseData.error,{
+            timeOut:2000,
+            progressBar:true
+          });
+        }
+        else{
+          this.toastr.success('@Contactto','OTP sent successfully.',{
+            timeOut:2000,
+            progressBar:true
+          });
+        }
   },(error)=>{
     this.toastr.warning('@Contactto','Some error ocured while sending OTP.',{
       timeOut:2000,

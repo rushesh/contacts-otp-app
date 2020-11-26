@@ -1,3 +1,10 @@
+<div *ngIf="loadingContacts;else elsetemplate">
+  <h3 id="loadertext">Fetching Your Profile</h3>
+  <div id="loader"></div>
+</div>
+
+<ng-template #elsetemplate>
+
 <div class="container" *ngIf="user">
     <hr>
     <h2 
@@ -104,3 +111,5 @@
 </div>
 
     </div>
+</div>
+  </ng-template>

@@ -1,3 +1,9 @@
+<div *ngIf="loadingContacts;else elsetemplate">
+  <h3 id="loadertext">Fetching Your Contacts</h3>
+  <div id="loader"></div>
+</div>
+
+<ng-template #elsetemplate>
 <div class="container" *ngIf="contacts?.length > 0">
     <div class="row py-5">
       <div class="col-12">
@@ -73,7 +79,7 @@
   </div>
 </div>
 </div>
-
+</ng-template>
 
   <!-- <pre class="card card-block card-header">{{message}}</pre> -->
   <ng-template #template>

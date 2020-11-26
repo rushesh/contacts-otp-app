@@ -47,4 +47,4 @@ Thumbs.db
 
 README.md
 
-/src/environments
+./src/environments/

@@ -7,6 +7,7 @@ import { HomeComponent } from './home/home.component';
 import { LoginformComponent } from './loginform/loginform/loginform.component';
 import { RegisterComponent } from './register/register.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
+import { WeatherListComponent } from './weather/weather-list/weather-list.component';
 
 
 const routes: Routes = [
@@ -16,6 +17,7 @@ const routes: Routes = [
   {path:'login',component:LoginformComponent},
   {path:'register',component:RegisterComponent},
   {path:'userprofile',component:UserProfileComponent},
+  {path:'getweather', component:WeatherListComponent},
   {path:'**',redirectTo:''}
 ];
 

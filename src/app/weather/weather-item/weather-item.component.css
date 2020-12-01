@@ -1,0 +1,94 @@
+.class1 {
+    display: inline-block;
+    width: 100%;
+    padding: 10px;
+  }
+  
+  .class1 h3 {
+    margin: 0 0 10px 0;
+    padding: 0;
+    font-size: 22px;
+  }
+  
+  .class2  {
+    min-width: auto !important;
+    display: inline-block;
+    width: 100%;
+    padding:3px;
+    box-shadow:1px solid lightgray;
+  }
+  .class2 .current{
+    text-align: right !important;
+  }
+  .class2 .temperature {
+    text-align: left !important;
+  }
+  
+  .weather-list {
+    margin: 20px auto;
+    width: 40%;
+  }
+  
+  .weather-element {
+    box-shadow: 2px 2px 4px #dc3545;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #dc3545;
+    word-break: break-word;
+  }
+  
+  .tooltip {
+    position: absolute;
+    padding: 3px;
+    font-size: 12px;
+    background-color: #eee;
+    border-radius: 3px;
+    border: 1px solid #ccc;
+    text-align: left;
+  }
+  
+  .temperature {
+    cursor: default;
+  }
+  
+  .info {
+    color: rgba(95, 95, 95, 0.51);
+    font-weight: bold;
+  }
+  
+  
+  .weather-search {
+    margin: 20px auto;
+    width: 40%;
+    text-align: center;
+  }
+    .weather-search label {
+      font-weight: bold;
+      margin-right: 20px;
+    }
+  
+    button, input {
+      font-size: inherit;
+      font-family: inherit;
+    }
+  
+    input {
+      padding: 3px 5px;
+      outline: none;
+      width: 50%;
+      margin-right: 20px;
+    }
+  
+    button {
+      background-color: #2ecc71;
+      border: none;
+      padding: 4px 8px;
+      box-shadow: 1px 1px 1px #95a5a6;
+      cursor: pointer;
+      color: white;
+    }
+  
+    button:hover {
+      background-color: #27ae60;
+  }
+  

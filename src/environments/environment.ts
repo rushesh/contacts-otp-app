@@ -4,7 +4,11 @@
 
 export const environment = {
   production: false,
-  backend_url:'https://fast-plains-55565.herokuapp.com'
+  backend_url:'https://fast-plains-55565.herokuapp.com',
+  // backend_url_weatherapp:'https://rushesh-web-server-weather.herokuapp.com',
+  backend_url_weatherapp:'http://localhost:3000',
+  kanban_url:'https://kanban-fire-app.web.app/',
+  githublink:'https://github.com/rushesh/'
 };
 
 /*

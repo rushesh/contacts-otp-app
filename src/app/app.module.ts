@@ -19,6 +19,10 @@ import { ToastrModule } from 'ngx-toastr';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { SentMessagesComponent } from './sent-messages/sent-messages.component';
 import { OrderModule } from 'ngx-order-pipe';
+import { SidebarComponent } from './weather/sidebar/sidebar.component';
+import { WeatherItemComponent } from './weather/weather-item/weather-item.component';
+import { WeatherSearchComponent } from './weather/weather-search/weather-search.component';
+import { WeatherListComponent } from './weather/weather-list/weather-list.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +34,11 @@ import { OrderModule } from 'ngx-order-pipe';
     HeaderComponent,
     ContactsAddComponent,
     UserProfileComponent,
-    SentMessagesComponent
+    SentMessagesComponent,
+    SidebarComponent,
+    WeatherItemComponent,
+    WeatherSearchComponent,
+    WeatherListComponent
   ],
   imports: [
     BrowserModule,

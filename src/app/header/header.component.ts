@@ -14,10 +14,16 @@ import { AuthService } from '../auth.service';
 export class HeaderComponent implements OnInit {
   subscription: any;
 
+  node_weather_app_backend;
+  kanban_url;
+  github_me;
   constructor(private http: HttpClient, private router:Router,private authService:AuthService,private toastr:ToastrService) { }
   loggedInState: Observable<boolean>; 
   log;
   ngOnInit() {
+    this.node_weather_app_backend = environment.backend_url_weatherapp;
+    this.kanban_url = environment.kanban_url;
+    this.github_me = environment.githublink;
     // localStorage.clear()
     // sessionStorage.clear()
     // get the current value

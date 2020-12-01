@@ -1,0 +1,15 @@
+<div class="container-fluid">
+    <div class="container">
+        <app-weather-search></app-weather-search>
+    </div>
+    <app-sidebar></app-sidebar>
+    
+<div class="weather-list">
+    <app-weather-item
+    *ngFor="let weatherItem of weatherItems"
+    [weatherItem]="weatherItem"
+  >
+      </app-weather-item
+  >
+</div>
+</div>
